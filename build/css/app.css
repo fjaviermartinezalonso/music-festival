@@ -540,3 +540,92 @@ body > section { /* El primer section del body */
 .bg-verde li:nth-child(odd) {
   background-color: #5ebfbb;
 }
+
+.contenedor-entradas {
+  background-color: #4CB8B3;
+}
+.contenedor-entradas h3 {
+  color: #FFFFFF;
+}
+.contenedor-entradas .entradas {
+  width: 95%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .contenedor-entradas .entradas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+  }
+}
+
+.pase {
+  transition: transform 0.3s;
+}
+@media (min-width: 768px) {
+  .pase {
+    max-width: 500px;
+  }
+}
+.pase:hover {
+  transform: scale(1.1);
+}
+.pase-nombre {
+  font-size: 3.6rem;
+  font-weight: 900;
+  text-align: center;
+  color: #FFFFFF;
+}
+.pase-header, .pase-footer {
+  padding: 0.5rem;
+}
+.pase-header p, .pase-footer p {
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+}
+.pase-header {
+  background-color: #F53756;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  padding: 1rem 0;
+}
+.pase-body {
+  background-color: #FFFFFF;
+}
+.pase-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pase-body li {
+  padding: 1rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+.pase-footer {
+  background-color: #FFFFFF;
+  padding: 3rem;
+}
+.pase-footer p {
+  background-color: #752F97;
+  padding: 1rem 0;
+  font-weight: 900;
+  font-size: 2.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.pase-footer p:hover {
+  background-color: #391749;
+}
+
+.contenedor-footer {
+  background-color: #F53756;
+  padding: 2rem 0;
+}
+.contenedor-footer p {
+  margin: 0;
+  text-align: center;
+  color: #FFFFFF;
+}
