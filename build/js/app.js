@@ -1,6 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+    navegacionFija();
     crearGaleria();
 });
+
+function navegacionFija() {
+    const header = document.querySelector(".header");
+    const festival = document.querySelector(".sobre-festival");
+
+    window.addEventListener("scroll", () => {
+        if(festival.getBoundingClientRect().bottom < 1) { // en cuanto lo pasemos fijamos barra
+            header.classList.add("fixed");
+        }
+        else {
+            header.classList.remove("fixed");
+        }
+    });
+}
 
 function crearGaleria() {
     const galeria = document.querySelector(".galeria-imagenes");
