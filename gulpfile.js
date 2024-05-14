@@ -8,10 +8,11 @@ const sass = gulpSass(dartSass);
 
 /* Recoge el fichero scss de la ruta especificada, compila usando la funcion anterior
 y deja el resultado en la ruta destino */
+/* Con sourcemaps al inspeccionar el elemento en el navegador dirá a cuál arhivo Sass pertenece */
 export function css(done) {
-    src("src/scss/app.scss")
+    src("src/scss/app.scss", {sourcemaps: true})
         .pipe(sass().on("error", sass.logError)) /* En caso de error mostrarlo en terminal */
-        .pipe(dest("build/css"));
+        .pipe(dest("build/css", {sourcemaps: true}));
     done();
 }
 
