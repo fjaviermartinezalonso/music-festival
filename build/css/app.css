@@ -478,3 +478,65 @@ body > section { /* El primer section del body */
   color: #4CB8B3;
   font-weight: bold;
 }
+
+.horarios {
+  background-color: #F53756;
+}
+.horarios h3, .horarios .dia {
+  color: #FFFFFF;
+  text-align: center;
+}
+.horarios .dia {
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.escenarios-contenedor {
+  width: 95%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .escenarios-contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+  }
+}
+
+.escenario {
+  padding-top: 2rem;
+}
+.escenario .nombre-escenario {
+  text-transform: uppercase;
+  font-weight: 900;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.calendario {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.calendario li {
+  padding: 2.5rem;
+  font-weight: 700;
+}
+.calendario li span {
+  font-weight: 400;
+}
+
+.bg-amarillo {
+  background-color: #fdda00;
+}
+.bg-amarillo li:nth-child(odd) {
+  background-color: #ffdf18;
+}
+
+.bg-verde {
+  background-color: #4CB8B3;
+}
+.bg-verde li:nth-child(odd) {
+  background-color: #5ebfbb;
+}

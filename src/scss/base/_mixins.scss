@@ -30,3 +30,8 @@
     grid-template-columns: repeat($cols, 1fr);
     column-gap: $gap;
 }
+@mixin resetear-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
