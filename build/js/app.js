@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     navegacionFija();
     crearGaleria();
+    resaltarEnlace();
 });
 
 function navegacionFija() {
@@ -60,4 +61,29 @@ function cerrarModal() {
     setTimeout(() => {
         modal?.remove();
     }, 500);
+}
+
+function resaltarEnlace() {
+    document.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".navegacion-principal a");
+
+        let sectionActualId = "";
+        sections.forEach( section => {
+            const sectionTop = section.offsetTop; // distancia con el top del body
+            const sectionHeight = section.clientHeight; // tamaño del section
+            if(window.scrollY >= (sectionTop - sectionHeight/3)) {
+                sectionActualId = section.id; // si he sobrepasado la mayor parte de la section
+            }
+        });
+
+        navLinks.forEach( link => {
+            if(link.getAttribute("href") === `#${sectionActualId}`) {
+                link.classList.add("active");
+            }
+            else {
+                link.classList.remove("active");
+            }
+        });
+    });
 }
