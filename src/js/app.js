@@ -28,7 +28,7 @@ function crearGaleria() {
         imagen.loading = "lazy"; /* El orden es vital, primero el loading */
         imagen.width = "300"; /* Hay que añadir un tamaño aproximado */
         imagen.height = "200";
-        imagen.src = `src/img/gallery/full/${i}.jpg`;
+        imagen.src = `src/img/gallery/thumb/${i}.jpg`;
         imagen.alt = "Imagen galería";
         imagen.addEventListener("click", () => mostrarImagen(i)); // porque hay que pasar argumento
         galeria.appendChild(imagen);

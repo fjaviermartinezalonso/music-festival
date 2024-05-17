@@ -1,7 +1,10 @@
+import path from "path"; // lo toma de nodejs, ya incluido
+import fs from "fs"; // ya incluido en node
 import {src, dest, watch, series} from "gulp";
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
 import terser from "gulp-terser";
+import sharp from "sharp";
 
 /* Compila Sass usando la funcion gulpSass utilizando la dependencia de Sass. Es
 una forma de decirle que utilice las dependencias de la carpeta node-modules */
@@ -26,6 +29,36 @@ export function css(done) {
     done();
 }
 
+/* Para reducir el tamaño de las imágenes de la galería en pequeño (thumbnail). 
+Usamos sharp, con código nodejs */
+export async function crop(done) {
+    const inputFolder = 'src/img/gallery/full'
+    const outputFolder = 'src/img/gallery/thumb';
+    const width = 250;
+    const height = 180;
+    if (!fs.existsSync(outputFolder)) {
+        fs.mkdirSync(outputFolder, { recursive: true })
+    }
+    const images = fs.readdirSync(inputFolder).filter(file => {
+        return /\.(jpg)$/i.test(path.extname(file));
+    });
+    try {
+        images.forEach(file => {
+            const inputFile = path.join(inputFolder, file)
+            const outputFile = path.join(outputFolder, file)
+            sharp(inputFile) 
+                .resize(width, height, {
+                    position: 'centre'
+                })
+                .toFile(outputFile)
+        });
+
+        done()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export function dev() {
     watch("src/scss/**/*.scss", css);
     watch("src/js/*.js", js);
@@ -34,4 +67,4 @@ export function dev() {
 /* Ejecuta en serie las siguientes funciones. Como es default no tiene nombre,
 se ejecuta al llamar a gulp sin argumentos. La función dev
 está al final porque tiene watch */
-export default series(js, css, dev);
+export default series(crop, js, css, dev);
