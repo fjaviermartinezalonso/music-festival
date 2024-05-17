@@ -24,21 +24,24 @@ function crearGaleria() {
     const NUM_IMAGENES = 16;
 
     for (let i = 1; i <= NUM_IMAGENES; i++) {
-        const imagen = document.createElement("IMG");
-        imagen.loading = "lazy"; /* El orden es vital, primero el loading */
-        imagen.width = "300"; /* Hay que añadir un tamaño aproximado */
-        imagen.height = "200";
-        imagen.src = `src/img/gallery/thumb/${i}.jpg`;
-        imagen.alt = "Imagen galería";
+        const imagen = document.createElement("PICTURE");
+        imagen.innerHTML = `
+            <source srcset="build/img/gallery/thumb/${i}.avif" type="image/avif">
+            <source srcset="build/img/gallery/thumb/${i}.webp" type="image/webp">
+            <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="Imagen galería">
+        `;
         imagen.addEventListener("click", () => mostrarImagen(i)); // porque hay que pasar argumento
         galeria.appendChild(imagen);
     }
 }
 
 function mostrarImagen(i) {
-    const imagen = document.createElement("IMG");
-    imagen.src = `src/img/gallery/full/${i}.jpg`;
-    imagen.alt = "Imagen galería";
+    const imagen = document.createElement("PICTURE");
+    imagen.innerHTML = `
+        <source srcset="build/img/gallery/full/${i}.avif" type="image/avif">
+        <source srcset="build/img/gallery/full/${i}.webp" type="image/webp">
+        <img loading="lazy" width="200" height="300" src="build/img/gallery/full/${i}.jpg" alt="Imagen galería">
+    `;
 
     // const cerrarBtn = document.createElement("BUTTON");
     // cerrarBtn.textContent = "X";
