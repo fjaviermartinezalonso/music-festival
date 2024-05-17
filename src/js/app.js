@@ -25,6 +25,9 @@ function crearGaleria() {
 
     for (let i = 1; i <= NUM_IMAGENES; i++) {
         const imagen = document.createElement("IMG");
+        imagen.loading = "lazy"; /* El orden es vital, primero el loading */
+        imagen.width = "300"; /* Hay que añadir un tamaño aproximado */
+        imagen.height = "200";
         imagen.src = `src/img/gallery/full/${i}.jpg`;
         imagen.alt = "Imagen galería";
         imagen.addEventListener("click", () => mostrarImagen(i)); // porque hay que pasar argumento
